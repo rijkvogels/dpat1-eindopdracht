@@ -9,7 +9,7 @@ namespace FrontEnd
         {
             while (true)
             {
-                IGame game = Creator.Create();
+                IGame game = Parser.Create();
 
                 Display display = new();
 
