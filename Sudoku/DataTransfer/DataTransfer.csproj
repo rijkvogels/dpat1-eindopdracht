@@ -10,4 +10,9 @@
     <ProjectReference Include="..\GameLibrary\GameLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Factories\" />
+    <Folder Include="Puzzles\" />
+  </ItemGroup>
+
 </Project>

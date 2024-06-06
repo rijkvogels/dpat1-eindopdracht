@@ -9,9 +9,10 @@ namespace FrontEnd
         {
             while (true)
             {
-                IGame game = Creator.Create();
+                IGame game = Parser.Create();
 
                 Display display = new();
+                display.UpdateGame(game);
 
                 // Event handler 'that checks for game updates.
                 game.GameUpdated += (eSender, eGame) => display.UpdateGame(eGame);
