@@ -21,6 +21,7 @@ namespace DataTransfer
                 string? directoryPath = this.DirectoryPath();
 
                 if (directoryPath is not null)
+                {
                     if (File.Exists(directoryPath + fileName))
                     {
                         string content = File.ReadAllText(directoryPath + fileName);
@@ -28,7 +29,7 @@ namespace DataTransfer
 
                         return (content, type);
                     }
-                        
+                }                       
             }
             catch (Exception exception)
             {
@@ -45,13 +46,17 @@ namespace DataTransfer
             int index = path.IndexOf(_projectPath) + _projectPath.Length + 1;
 
             if (index >= 0)
+            {
                 path = path[..index];
+            }
 
             path += _directoryPath;
 
             if (Directory.Exists(path))
+            {
                 return path;
-
+            }
+            
             return null;
         }
 

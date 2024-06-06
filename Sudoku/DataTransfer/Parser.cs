@@ -4,7 +4,7 @@ namespace DataTransfer
 {
     public static class Parser
     {
-        private const int currentPuzzle = 2;
+        private const int currentPuzzle = 3;
 
         private static readonly string[] puzzles =
         [
@@ -31,7 +31,7 @@ namespace DataTransfer
             Console.WriteLine(sudokuData);
             Console.WriteLine(sudokuType);
 
-            return new Game();
+            return new Game(puzzles[currentPuzzle]);
         }
     }
 }
