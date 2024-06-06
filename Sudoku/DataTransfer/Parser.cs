@@ -28,8 +28,7 @@ namespace DataTransfer
         {
             var (sudokuData, sudokuType) = new Reader().Read(puzzles[currentPuzzle]);
 
-            Console.WriteLine(sudokuData);
-            Console.WriteLine(sudokuType);
+            // TODO: Parse the data here.
 
             return new Game(puzzles[currentPuzzle]);
         }

@@ -19,6 +19,8 @@
                 return;
             }
 
+            // TODO: Handle the game logic here.
+
             // Update the game.
             this.UpdateGame();
         }
