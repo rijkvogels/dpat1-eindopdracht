@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using GameLibrary.Enumerations;
+using System.Text.Json;
 
 namespace DataTransfer
 {
@@ -13,20 +14,28 @@ namespace DataTransfer
             _directoryPath = "DataTransfer\\Puzzles\\";
         }
 
-        public string? Read(string fileName)
+        public (string? content, SudokuType? sudokuType) Read(string fileName)
         {
             try
             {
-                if (DirectoryPath() is not null)
-                    if (File.Exists(DirectoryPath() + fileName))
-                        return File.ReadAllText(DirectoryPath() + fileName);
+                string? directoryPath = this.DirectoryPath();
+
+                if (directoryPath is not null)
+                    if (File.Exists(directoryPath + fileName))
+                    {
+                        string content = File.ReadAllText(directoryPath + fileName);
+                        SudokuType? type = GetSudokuType(fileName);
+
+                        return (content, type);
+                    }
+                        
             }
             catch (Exception exception)
             {
                 throw new JsonException("The provided text file is invalid. ERROR: ", exception);
             }
 
-            return null;
+            return (null, null);
         }
 
         private string? DirectoryPath()
@@ -44,6 +53,19 @@ namespace DataTransfer
                 return path;
 
             return null;
+        }
+
+        private static SudokuType? GetSudokuType(string fileName)
+        {
+            return Path.GetExtension(fileName).TrimStart('.') switch
+            {
+                "4x4" => SudokuType.Sudoku4x4,
+                "6x6" => SudokuType.Sudoku6x6,
+                "9x9" => SudokuType.Sudoku9x9,
+                "jigsaw" => SudokuType.SudokuJigsaw,
+                "samuari" => SudokuType.SudokuSamurai,
+                _ => null
+            };
         }
     }
 }

@@ -26,9 +26,10 @@ namespace DataTransfer
 
         public static IGame Create()
         {
-            String? sudokuData = new Reader().Read(puzzles[currentPuzzle]);
+            var (sudokuData, sudokuType) = new Reader().Read(puzzles[currentPuzzle]);
 
             Console.WriteLine(sudokuData);
+            Console.WriteLine(sudokuType);
 
             return new Game();
         }
