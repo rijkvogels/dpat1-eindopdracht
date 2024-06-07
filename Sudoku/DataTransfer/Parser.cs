@@ -1,4 +1,5 @@
-﻿using GameLibrary;
+﻿using DataTransfer.Factories;
+using GameLibrary;
 
 namespace DataTransfer
 {
@@ -12,6 +13,7 @@ namespace DataTransfer
             "puzzle.6x6",
             "puzzle.9x9",
             "puzzle.jigsaw",
+            "puzzle.samuari",
             "puzzle2.4x4",
             "puzzle2.6x6",
             "puzzle2.9x9",
@@ -28,7 +30,30 @@ namespace DataTransfer
         {
             var (sudokuData, sudokuType) = new Reader().Read(puzzles[currentPuzzle]);
 
-            // TODO: Parse the data here.
+            if (sudokuType.HasValue && sudokuData is not null)
+            {
+                ISudokuParser parser = SudokuParserFactory.GetParser(sudokuType.Value);
+                Sudoku sudoku = parser.Parse(sudokuData);
+
+
+                // PRINT TESTING
+                int rows = sudoku.Grid.GetLength(0);
+                int cols = sudoku.Grid.GetLength(1);
+
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < cols; j++)
+                    {
+                        var cell = sudoku.Grid[i, j];
+                        Console.Write($"({cell.Value}, {cell.Field}) ");
+                    }
+                    Console.WriteLine();
+                }
+
+            } else
+            {
+                throw new ArgumentNullException("Sudoku is missing values.");
+            }
 
             return new Game(puzzles[currentPuzzle]);
         }
