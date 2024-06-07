@@ -12,7 +12,7 @@ public class SudokuSamuraiParser : ISudokuParser
             throw new ArgumentException("Invalid Samurai Sudoku data. The data must contain exactly 5 grids.");
         }
 
-        Sudoku sudoku = new() { Grid = new Cell[12, 12] };
+        Sudoku sudoku = new() { Grid = new Cell[21, 21] };
 
         (int rowOffset, int colOffset)[] gridPositions =
         [
