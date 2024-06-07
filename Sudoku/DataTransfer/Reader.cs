@@ -27,6 +27,8 @@ namespace DataTransfer
                         string content = File.ReadAllText(directoryPath + fileName);
                         SudokuType? type = GetSudokuType(fileName);
 
+                        Console.WriteLine(type);
+
                         return (content, type);
                     }
                 }                       
@@ -68,7 +70,7 @@ namespace DataTransfer
                 "6x6" => SudokuType.Sudoku6x6,
                 "9x9" => SudokuType.Sudoku9x9,
                 "jigsaw" => SudokuType.SudokuJigsaw,
-                "samuari" => SudokuType.SudokuSamurai,
+                "samurai" => SudokuType.SudokuSamurai,
                 _ => null
             };
         }

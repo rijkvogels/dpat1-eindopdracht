@@ -4,19 +4,14 @@
     {
         public Sudoku Parse(string sudokuData)
         {
-            // Remove the prefix if it exists
-            const string prefix = "SumoCueV1=";
-            if (sudokuData.StartsWith(prefix))
+            if (sudokuData.StartsWith("SumoCueV1="))
             {
-                sudokuData = sudokuData.Substring(prefix.Length);
+                sudokuData = sudokuData["SumoCueV1=".Length..];
             }
 
-            var sudoku = new Sudoku
-            {
-                Grid = new Cell[9, 9]
-            };
+            Sudoku sudoku = new() { Grid = new Cell[9, 9] };
 
-            var parts = sudokuData.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] parts = sudokuData.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
 
             if (parts.Length != 81)
             {
@@ -25,7 +20,7 @@
 
             for (int i = 0; i < parts.Length; i++)
             {
-                var segments = parts[i].Split('J');
+                string[] segments = parts[i].Split('J');
                 if (segments.Length != 2) continue;
 
                 int value = int.Parse(segments[0]);
@@ -38,7 +33,7 @@
                 {
                     Value = value,
                     Field = field,
-                    Auxiliaries = new int[] { }
+                    Auxiliaries = []
                 };
             }
 

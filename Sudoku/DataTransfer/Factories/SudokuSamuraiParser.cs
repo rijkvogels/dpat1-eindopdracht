@@ -5,30 +5,28 @@ public class SudokuSamuraiParser : ISudokuParser
 {
     public Sudoku Parse(string sudokuData)
     {
-        var grids = sudokuData.Split('\n');
+        // Make sure we remove all the unused data.
+        var grids = sudokuData.Replace("\r", "").Split('\n');
         if (grids.Length != 5)
         {
             throw new ArgumentException("Invalid Samurai Sudoku data. The data must contain exactly 5 grids.");
         }
 
-        var sudoku = new Sudoku
-        {
-            Grid = new Cell[21, 21]
-        };
+        Sudoku sudoku = new() { Grid = new Cell[12, 12] };
 
-        var gridPositions = new (int rowOffset, int colOffset)[]
-        {
+        (int rowOffset, int colOffset)[] gridPositions =
+        [
             (0, 0),
             (0, 12),
             (6, 6),
             (12, 0),
             (12, 12)
-        };
+        ];
 
         for (int g = 0; g < 5; g++)
         {
             int[,] grid = Parse9x9Grid(grids[g]);
-            var (rowOffset, colOffset) = gridPositions[g];
+            (int rowOffset, int colOffset) = gridPositions[g];
 
             for (int row = 0; row < 9; row++)
             {
@@ -37,7 +35,7 @@ public class SudokuSamuraiParser : ISudokuParser
                     sudoku.Grid[row + rowOffset, col + colOffset] = new Cell
                     {
                         Value = grid[row, col],
-                        Field = GetField(row + rowOffset, col + colOffset),
+                        Field = GetField(row + rowOffset, col + colOffset, g),
                         Auxiliaries = []
                     };
                 }
@@ -47,14 +45,14 @@ public class SudokuSamuraiParser : ISudokuParser
         return sudoku;
     }
 
-    private int[,] Parse9x9Grid(string gridData)
+    private static int[,] Parse9x9Grid(string gridData)
     {
         if (gridData.Length != 81)
         {
             throw new ArgumentException("Invalid grid data. Each grid must contain exactly 81 characters.");
         }
 
-        var grid = new int[9, 9];
+        int[,] grid = new int[9, 9];
         for (int i = 0; i < 81; i++)
         {
             int row = i / 9;
@@ -65,10 +63,9 @@ public class SudokuSamuraiParser : ISudokuParser
         return grid;
     }
 
-    private static int GetField(int row, int col)
+    private static int GetField(int row, int col, int grid)
     {
-        // Logic to determine the field for Samurai Sudoku
-        // Needs specific logic based on the puzzle's design
-        return 0; // Placeholder logic
+        // Logic to determine the field, for a 9X9 Sudoku it's 3X3. We paste the grid number before the fieldData to make sure we do not get duplicates.
+        return grid + Int32.Parse(grid.ToString() + ((row / 3) * 3 + (col / 3)).ToString());
     }
 }

@@ -9,10 +9,7 @@
                 throw new ArgumentOutOfRangeException("Invalid Sudoku data. The data must contain exactly 36 characters.");
             }
 
-            var sudoku = new Sudoku
-            {
-                Grid = new Cell[6, 6]
-            };
+            Sudoku sudoku = new() { Grid = new Cell[6, 6] };
 
             for (int i = 0; i < 36; i++)
             {

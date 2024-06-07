@@ -10,10 +10,7 @@ public class Sudoku9x9Parser : ISudokuParser
             throw new ArgumentOutOfRangeException("Invalid Sudoku data. The data must contain exactly 81 characters.");
         }
 
-        var sudoku = new Sudoku
-        {
-            Grid = new Cell[9, 9]
-        };
+        Sudoku sudoku = new() { Grid = new Cell[9, 9] };
 
         for (int i = 0; i < 81; i++)
         {

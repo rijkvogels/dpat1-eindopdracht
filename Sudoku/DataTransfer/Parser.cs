@@ -5,7 +5,7 @@ namespace DataTransfer
 {
     public static class Parser
     {
-        private const int currentPuzzle = 3;
+        private const int currentPuzzle = 4;
 
         private static readonly string[] puzzles =
         [
@@ -13,7 +13,7 @@ namespace DataTransfer
             "puzzle.6x6",
             "puzzle.9x9",
             "puzzle.jigsaw",
-            "puzzle.samuari",
+            "puzzle.samurai",
             "puzzle2.4x4",
             "puzzle2.6x6",
             "puzzle2.9x9",
@@ -30,11 +30,11 @@ namespace DataTransfer
         {
             var (sudokuData, sudokuType) = new Reader().Read(puzzles[currentPuzzle]);
 
+            Console.WriteLine(sudokuType);
             if (sudokuType.HasValue && sudokuData is not null)
             {
                 ISudokuParser parser = SudokuParserFactory.GetParser(sudokuType.Value);
                 Sudoku sudoku = parser.Parse(sudokuData);
-
 
                 // PRINT TESTING
                 int rows = sudoku.Grid.GetLength(0);
