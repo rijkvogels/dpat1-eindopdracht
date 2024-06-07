@@ -44,8 +44,15 @@ namespace DataTransfer
                 {
                     for (int j = 0; j < cols; j++)
                     {
-                        var cell = sudoku.Grid[i, j];
-                        Console.Write($"({cell.Value}, {cell.Field}) ");
+                        Cell? cell = sudoku.Grid[i, j];
+                        if (cell is not null)
+                        {
+                            Console.Write($"({cell.Value}, {cell.Field}) ");
+                        } else
+                        {
+                            Console.Write("( , ) ");
+                        }
+                       
                     }
                     Console.WriteLine();
                 }
