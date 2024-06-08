@@ -19,7 +19,7 @@ namespace FrontEnd.Modules
                     if (row > 0 && sudoku.Grid[row - 1, col] is not null && cell is not null && cell.Field != sudoku.Grid[row - 1, col].Field)
                         topBorder = "—";
 
-                    yield return new ColoredString(" " + topBorder + " ", ConsoleColor.White, Display.BackgroundColor);
+                    yield return new ColoredString(" " + topBorder + " ", Display.BorderColor, Display.BackgroundColor);
                 }
                 yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
 
@@ -40,9 +40,9 @@ namespace FrontEnd.Modules
                         if (col < size - 1 && sudoku.Grid[row, col + 1] is not null && cell.Field != sudoku.Grid[row, col + 1].Field)
                             rightBorder = "|";
 
-                        yield return new ColoredString(leftBorder, ConsoleColor.White, Display.BackgroundColor);
-                        yield return new ColoredString(cell.Value.ToString(), ConsoleColor.Black, Display.ValueColor);
-                        yield return new ColoredString(rightBorder, ConsoleColor.White, Display.BackgroundColor);
+                        yield return new ColoredString(leftBorder, Display.BorderColor, Display.BackgroundColor);
+                        yield return new ColoredString(cell.Value.ToString(), Display.ValueColor, Display.BackgroundColor);
+                        yield return new ColoredString(rightBorder, Display.BorderColor, Display.BackgroundColor);
                     }
                 }
                 yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
@@ -55,7 +55,7 @@ namespace FrontEnd.Modules
                     if (row < size - 1 && sudoku.Grid[row + 1, col] is not null && cell is not null && cell.Field != sudoku.Grid[row + 1, col].Field)
                         bottomBorder = "—";
 
-                    yield return new ColoredString(" " + bottomBorder + " ", ConsoleColor.White, Display.BackgroundColor);
+                    yield return new ColoredString(" " + bottomBorder + " ", Display.BorderColor, Display.BackgroundColor);
                 }
                 yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
             }

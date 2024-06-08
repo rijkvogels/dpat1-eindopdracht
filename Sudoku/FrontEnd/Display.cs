@@ -6,6 +6,7 @@ namespace FrontEnd
     internal class Display
     {
         public static readonly ConsoleColor BackgroundColor = ConsoleColor.DarkGray;
+        public static readonly ConsoleColor BorderColor = ConsoleColor.Black;
         public static readonly ConsoleColor ValueColor = ConsoleColor.Yellow;
         public static readonly ConsoleColor ErrorColor = ConsoleColor.Red;
 
