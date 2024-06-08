@@ -28,41 +28,41 @@ namespace DataTransfer
 
         public static IGame Create()
         {
+            ISudoku sudoku;
+
             var (sudokuData, sudokuType) = new Reader().Read(puzzles[currentPuzzle]);
 
-            Console.WriteLine(sudokuType);
             if (sudokuType.HasValue && sudokuData is not null)
             {
                 ISudokuParser parser = SudokuParserFactory.GetParser(sudokuType.Value);
-                Sudoku sudoku = parser.Parse(sudokuData);
-
-                // PRINT TESTING
-                int rows = sudoku.Grid.GetLength(0);
-                int cols = sudoku.Grid.GetLength(1);
-
-                for (int i = 0; i < rows; i++)
-                {
-                    for (int j = 0; j < cols; j++)
-                    {
-                        Cell? cell = sudoku.Grid[i, j];
-                        if (cell is not null)
-                        {
-                            Console.Write($"({cell.Value}, {cell.Field}) ");
-                        } else
-                        {
-                            Console.Write("( , ) ");
-                        }
-                       
-                    }
-                    Console.WriteLine();
-                }
-
+                sudoku = parser.Parse(sudokuData);
             } else
             {
                 throw new ArgumentNullException("Sudoku is missing values.");
             }
 
-            return new Game(puzzles[currentPuzzle]);
+            int rows = sudoku.Grid.GetLength(0);
+            int cols = sudoku.Grid.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    ICell? cell = sudoku.Grid[i, j];
+                    if (cell is not null)
+                    {
+                        Console.Write($"({cell.Value}, {cell.Field}) ");
+                    }
+                    else
+                    {
+                        Console.Write("( , ) ");
+                    }
+
+                }
+                Console.WriteLine();
+            }
+
+            return new Game(sudoku, puzzles[currentPuzzle]);
         }
     }
 }

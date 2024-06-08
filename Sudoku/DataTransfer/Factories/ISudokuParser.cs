@@ -1,7 +1,9 @@
-﻿namespace DataTransfer.Factories
+﻿using GameLibrary;
+
+namespace DataTransfer.Factories
 {
     internal interface ISudokuParser
     {
-        Sudoku Parse(string sudokuData);
+        ISudoku Parse(string sudokuData);
     }
 }

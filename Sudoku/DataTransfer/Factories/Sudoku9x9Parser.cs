@@ -1,30 +1,26 @@
 ﻿using DataTransfer.Factories;
-using DataTransfer;
+using GameLibrary;
 
 public class Sudoku9x9Parser : ISudokuParser
 {
-    public Sudoku Parse(string sudokuData)
+    public ISudoku Parse(string sudokuData)
     {
         if (sudokuData.Length != 81)
         {
             throw new ArgumentOutOfRangeException("Invalid Sudoku data. The data must contain exactly 81 characters.");
         }
 
-        Sudoku sudoku = new() { Grid = new Cell[9, 9] };
+        var grid = new ICell[9, 9];
 
         for (int i = 0; i < 81; i++)
         {
             int row = i / 9;
             int col = i % 9;
-            sudoku.Grid[row, col] = new Cell
-            {
-                Value = sudokuData[i] - '0',
-                Field = GetField(row, col),
-                Auxiliaries = []
-            };
+
+            grid[row, col] = new Cell(sudokuData[i] - '0', GetField(row, col));
         }
 
-        return sudoku;
+        return new Sudoku(grid);
     }
 
     private static int GetField(int row, int col)

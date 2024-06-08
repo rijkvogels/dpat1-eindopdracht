@@ -1,9 +1,9 @@
-﻿using DataTransfer;
-using DataTransfer.Factories;
+﻿using DataTransfer.Factories;
+using GameLibrary;
 
 public class SudokuSamuraiParser : ISudokuParser
 {
-    public Sudoku Parse(string sudokuData)
+    public ISudoku Parse(string sudokuData)
     {
         // Make sure we remove all the unused data.
         var grids = sudokuData.Replace("\r", "").Split('\n');
@@ -12,7 +12,7 @@ public class SudokuSamuraiParser : ISudokuParser
             throw new ArgumentException("Invalid Samurai Sudoku data. The data must contain exactly 5 grids.");
         }
 
-        Sudoku sudoku = new() { Grid = new Cell[21, 21] };
+        ICell[,] grid = new ICell[21, 21];
 
         (int rowOffset, int colOffset)[] gridPositions =
         [
@@ -25,24 +25,19 @@ public class SudokuSamuraiParser : ISudokuParser
 
         for (int g = 0; g < 5; g++)
         {
-            int[,] grid = Parse9x9Grid(grids[g]);
+            int[,] parsedGrid = Parse9x9Grid(grids[g]);
             (int rowOffset, int colOffset) = gridPositions[g];
 
             for (int row = 0; row < 9; row++)
             {
                 for (int col = 0; col < 9; col++)
                 {
-                    sudoku.Grid[row + rowOffset, col + colOffset] = new Cell
-                    {
-                        Value = grid[row, col],
-                        Field = GetField(row + rowOffset, col + colOffset, g),
-                        Auxiliaries = []
-                    };
+                    grid[row + rowOffset, col + colOffset] = new Cell(parsedGrid[row, col], GetField(row + rowOffset, col + colOffset, g));
                 }
             }
         }
 
-        return sudoku;
+        return new Sudoku(grid);
     }
 
     private static int[,] Parse9x9Grid(string gridData)

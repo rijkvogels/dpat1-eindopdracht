@@ -1,15 +1,17 @@
-﻿namespace DataTransfer.Factories
+﻿using GameLibrary;
+
+namespace DataTransfer.Factories
 {
     internal class SudokuJigsawParser : ISudokuParser
     {
-        public Sudoku Parse(string sudokuData)
+        public ISudoku Parse(string sudokuData)
         {
             if (sudokuData.StartsWith("SumoCueV1="))
             {
                 sudokuData = sudokuData["SumoCueV1=".Length..];
             }
 
-            Sudoku sudoku = new() { Grid = new Cell[9, 9] };
+            ICell[,] grid = new ICell[9, 9];
 
             string[] parts = sudokuData.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -29,15 +31,10 @@
                 int row = i / 9;
                 int col = i % 9;
 
-                sudoku.Grid[row, col] = new Cell
-                {
-                    Value = value,
-                    Field = field,
-                    Auxiliaries = []
-                };
+                grid[row, col] = new Cell(value, field);
             }
 
-            return sudoku;
+            return new Sudoku(grid);
         }
     }
 }
