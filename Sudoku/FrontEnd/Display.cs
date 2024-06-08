@@ -6,6 +6,9 @@ namespace FrontEnd
     internal class Display
     {
         public static readonly ConsoleColor BackgroundColor = ConsoleColor.DarkGray;
+        public static readonly ConsoleColor ValueColor = ConsoleColor.Yellow;
+        public static readonly ConsoleColor ErrorColor = ConsoleColor.Red;
+
         public static readonly string MarginLeft = "   ";
 
         private readonly Header _header;
@@ -30,7 +33,10 @@ namespace FrontEnd
             }
 
             IViewType display = ViewTypeFactory.Create(game.ViewType);
-            display.Show(game);
+            foreach (ColoredString item in display.Show(game))
+            {
+                Write(item);
+            }
 
             foreach (ColoredString item in _footer.Render(game))
             {

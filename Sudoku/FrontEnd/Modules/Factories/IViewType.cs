@@ -4,6 +4,6 @@ namespace FrontEnd.Modules
 {
     internal interface IViewType
     {
-        void Show(IGame game);
+        IEnumerable<ColoredString> Show(IGame game);
     }
 }
