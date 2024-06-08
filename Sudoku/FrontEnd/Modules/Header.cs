@@ -24,6 +24,8 @@ namespace FrontEnd.Modules
             yield return new(new string('-', Console.WindowWidth) + "\n");
 
             yield return new("\n");
+            yield return new("\n");
+            yield return new("\n");
         }
     }
 }

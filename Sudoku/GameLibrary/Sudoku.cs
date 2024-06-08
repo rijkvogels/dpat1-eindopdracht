@@ -1,24 +1,26 @@
-﻿namespace GameLibrary
+﻿using GameLibrary.Enumerations;
+
+namespace GameLibrary
 {
     public class Sudoku : ISudoku
     {
         public ICell[,] Grid { get; }
 
-        public bool HelpMode { get; set; }
-        public bool CheckMode { get; set; }
+        public ViewType ViewType { get; set; }
+        public bool IndicationMode { get; set; }
 
         public Sudoku(ICell[,] grid) {
             this.Grid = grid;
 
-            this.HelpMode = false;
-            this.CheckMode = false;
+            this.ViewType = ViewType.Definite;
+            this.IndicationMode = false; // TODO: If we set this to true cells will be validated. Create a function Game to change this value.
         }
     }
 
     public interface ISudoku
     {
         ICell[,] Grid { get; }
-        bool HelpMode { get; set; }
-        bool CheckMode { get; set; }
+        ViewType ViewType { get; set; }
+        bool IndicationMode { get; set; }
     }
 }

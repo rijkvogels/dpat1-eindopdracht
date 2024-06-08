@@ -25,28 +25,6 @@ namespace GameLibrary
             }
 
             // TODO: Handle the game logic here.
-            // TODO: Remove this print-testing data.
-            /*
-            int rows = this.Sudoku.Grid.GetLength(0);
-            int cols = this.Sudoku.Grid.GetLength(1);
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    ICell? cell = this.Sudoku.Grid[i, j];
-                    if (cell is not null)
-                    {
-                        Console.Write($"({cell.Value}, {cell.Field}) ");
-                    } else
-                    {
-                        Console.Write("( , ) ");
-                    }
-
-                }
-                Console.WriteLine();
-            }
-            */
 
             // Update the game.
             this.UpdateGame();

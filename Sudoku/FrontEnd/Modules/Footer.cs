@@ -7,6 +7,8 @@ namespace FrontEnd.Modules
         public IEnumerable<ColoredString> Render(IGame game)
         {
             yield return new("\n");
+            yield return new("\n");
+            yield return new("\n");
 
             yield return new(new string('-', Console.WindowWidth) + "\n");
 
