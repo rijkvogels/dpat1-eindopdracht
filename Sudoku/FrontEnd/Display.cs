@@ -28,8 +28,9 @@ namespace FrontEnd
             {
                 Write(item);
             }
-            
-            // TODO: Add the sudoku display here.
+
+            IViewType display = ViewTypeFactory.Create(game.ViewType);
+            display.Show(game);
 
             foreach (ColoredString item in _footer.Render(game))
             {

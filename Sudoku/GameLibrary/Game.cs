@@ -10,10 +10,13 @@ namespace GameLibrary
         public ISudoku Sudoku { get; }
         
         public SudokuType SudokuType { get; }
+        public ViewType ViewType { get; private set;  }
 
         public Game(ISudoku sudoku, SudokuType sudokuType) {
             this.Sudoku = sudoku;
             this.SudokuType = sudokuType;
+
+            this.ViewType = ViewType.Definite;
         }
 
         public void NextFrame(KeyData input)
@@ -25,28 +28,6 @@ namespace GameLibrary
             }
 
             // TODO: Handle the game logic here.
-            // TODO: Remove this print-testing data.
-            /*
-            int rows = this.Sudoku.Grid.GetLength(0);
-            int cols = this.Sudoku.Grid.GetLength(1);
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    ICell? cell = this.Sudoku.Grid[i, j];
-                    if (cell is not null)
-                    {
-                        Console.Write($"({cell.Value}, {cell.Field}) ");
-                    } else
-                    {
-                        Console.Write("( , ) ");
-                    }
-
-                }
-                Console.WriteLine();
-            }
-            */
 
             // Update the game.
             this.UpdateGame();
@@ -66,6 +47,7 @@ namespace GameLibrary
         event EventHandler<Game> GameUpdated;
         bool Exit { get; }
         SudokuType SudokuType { get; }
+        ViewType ViewType { get; }
 
         void NextFrame(KeyData input);
         void EndGame();
