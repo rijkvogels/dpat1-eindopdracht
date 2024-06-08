@@ -15,11 +15,17 @@ namespace FrontEnd.Modules
                 for (int col = 0; col < size; col++)
                 {
                     ICell? cell = sudoku.Grid[row, col];
-                    string topBorder = " ";
-                    if (row > 0 && sudoku.Grid[row - 1, col] is not null && cell is not null && cell.Field != sudoku.Grid[row - 1, col].Field)
-                        topBorder = "—";
+                    if (cell is null)
+                    {
+                        yield return new ColoredString("   ", ConsoleColor.White, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
+                    } else
+                    {
+                        string topBorder = " ";
+                        if (row > 0 && sudoku.Grid[row - 1, col] is not null && cell.Field != sudoku.Grid[row - 1, col].Field)
+                            topBorder = "—";
 
-                    yield return new ColoredString(" " + topBorder + " ", Display.BorderColor, Display.BackgroundColor);
+                        yield return new ColoredString(" " + topBorder + " ", Display.BorderColor, Display.BackgroundColor);
+                    }
                 }
                 yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
 
@@ -51,11 +57,18 @@ namespace FrontEnd.Modules
                 for (int col = 0; col < size; col++)
                 {
                     ICell? cell = sudoku.Grid[row, col];
-                    string bottomBorder = " ";
-                    if (row < size - 1 && sudoku.Grid[row + 1, col] is not null && cell is not null && cell.Field != sudoku.Grid[row + 1, col].Field)
-                        bottomBorder = "—";
+                    if (cell is null)
+                    {
+                        yield return new ColoredString("   ", ConsoleColor.White, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
+                    }
+                    else
+                    {
+                        string bottomBorder = " ";
+                        if (row < size - 1 && sudoku.Grid[row + 1, col] is not null && cell is not null && cell.Field != sudoku.Grid[row + 1, col].Field)
+                            bottomBorder = "—";
 
-                    yield return new ColoredString(" " + bottomBorder + " ", Display.BorderColor, Display.BackgroundColor);
+                        yield return new ColoredString(" " + bottomBorder + " ", Display.BorderColor, Display.BackgroundColor);
+                    }
                 }
                 yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
             }
