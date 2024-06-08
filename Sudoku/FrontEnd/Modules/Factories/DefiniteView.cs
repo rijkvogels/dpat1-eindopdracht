@@ -16,9 +16,8 @@ namespace FrontEnd.Modules
                 {
                     ICell? cell = sudoku.Grid[row, col];
                     if (cell is null)
-                    {
                         yield return new ColoredString("   ", ConsoleColor.White, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
-                    } else
+                    else
                     {
                         string topBorder = " ";
                         if (row > 0 && sudoku.Grid[row - 1, col] is not null && cell.Field != sudoku.Grid[row - 1, col].Field)
@@ -58,9 +57,8 @@ namespace FrontEnd.Modules
                 {
                     ICell? cell = sudoku.Grid[row, col];
                     if (cell is null)
-                    {
                         yield return new ColoredString("   ", ConsoleColor.White, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
-                    }
+
                     else
                     {
                         string bottomBorder = " ";
