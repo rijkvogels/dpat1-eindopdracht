@@ -11,7 +11,7 @@ namespace FrontEnd.Modules
             {
                 ViewType.Definite => new DefiniteView(),
                 ViewType.Note => new NoteView(),
-                _ => throw new ArgumentException("Invalid display type"),
+                _ => throw new ArgumentException("Invalid View type."),
             };
         }
     }
