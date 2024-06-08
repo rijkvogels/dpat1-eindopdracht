@@ -3,7 +3,6 @@
     public enum ViewType
     {
         Definite,
-        Note,
-        Indication
+        Note
     }
 }
