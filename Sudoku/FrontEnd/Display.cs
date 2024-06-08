@@ -33,7 +33,7 @@ namespace FrontEnd
                 Write(item);
             }
 
-            IViewType display = ViewTypeFactory.Create(game.ViewType);
+            IViewType display = ViewTypeFactory.Create(game.Sudoku.ViewType);
             foreach (ColoredString item in display.Show(game))
             {
                 Write(item);

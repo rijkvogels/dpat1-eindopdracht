@@ -42,8 +42,13 @@ namespace FrontEnd.Modules
                             leftBorder = "|";
                         yield return new ColoredString(leftBorder, Display.BorderColor, Display.BackgroundColor);
 
+                        ConsoleColor valueColor = Display.ValueColor;
+                        // Check if validation is on and if the cell is not valid.
+                        if (sudoku.IndicationMode && cell.Validate() is not true)
+                            valueColor = Display.ErrorColor;
+
                         string cellValue = cell.Value == 0 ? " " : cell.Value.ToString();
-                        yield return new ColoredString(cellValue, Display.ValueColor, Display.BackgroundColor);
+                        yield return new ColoredString(cellValue, valueColor, Display.BackgroundColor);
 
                         string rightBorder = " ";
                         if (col < size - 1 && sudoku.Grid[row, col + 1] is not null && cell.Field != sudoku.Grid[row, col + 1].Field)
