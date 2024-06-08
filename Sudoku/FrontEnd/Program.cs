@@ -14,12 +14,13 @@ namespace FrontEnd
                 Display display = new();
                 display.UpdateGame(game);
 
-                // Event handler 'that checks for game updates.
+                // Event handler that checks for game updates.
                 game.GameUpdated += (eSender, eGame) => display.UpdateGame(eGame);
 
                 // As long as the game is not completed, wait for the next input.
                 while (!game.Exit)
                 {
+                    // We wait for the next user input to continue.
                     ConsoleKey nextInput = Console.ReadKey().Key;
                     game.NextFrame(Input.GetDirection(nextInput));
                 }

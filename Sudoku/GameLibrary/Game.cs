@@ -1,14 +1,19 @@
-﻿namespace GameLibrary
+﻿using GameLibrary.Enumerations;
+
+namespace GameLibrary
 {
     public class Game : IGame
     {
         public event EventHandler<Game>? GameUpdated;
         public bool Exit { get; private set; }
 
-        public string PuzzlelUrl { get; }
+        public ISudoku Sudoku { get; }
+        
+        public SudokuType SudokuType { get; }
 
-        public Game(string puzzleUrl) {
-            this.PuzzlelUrl = puzzleUrl;
+        public Game(ISudoku sudoku, SudokuType sudokuType) {
+            this.Sudoku = sudoku;
+            this.SudokuType = sudokuType;
         }
 
         public void NextFrame(KeyData input)
@@ -20,6 +25,28 @@
             }
 
             // TODO: Handle the game logic here.
+            // TODO: Remove this print-testing data.
+            /*
+            int rows = this.Sudoku.Grid.GetLength(0);
+            int cols = this.Sudoku.Grid.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    ICell? cell = this.Sudoku.Grid[i, j];
+                    if (cell is not null)
+                    {
+                        Console.Write($"({cell.Value}, {cell.Field}) ");
+                    } else
+                    {
+                        Console.Write("( , ) ");
+                    }
+
+                }
+                Console.WriteLine();
+            }
+            */
 
             // Update the game.
             this.UpdateGame();
@@ -35,9 +62,10 @@
 
     public interface IGame
     {
+        ISudoku Sudoku { get; }
         event EventHandler<Game> GameUpdated;
         bool Exit { get; }
-        string PuzzlelUrl { get; }
+        SudokuType SudokuType { get; }
 
         void NextFrame(KeyData input);
         void EndGame();
