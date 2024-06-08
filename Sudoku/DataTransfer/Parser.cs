@@ -36,33 +36,11 @@ namespace DataTransfer
             {
                 ISudokuParser parser = SudokuParserFactory.GetParser(sudokuType.Value);
                 sudoku = parser.Parse(sudokuData);
-            } else
-            {
-                throw new ArgumentNullException("Sudoku is missing values.");
+
+                return new Game(sudoku, sudokuType.Value);
             }
 
-            int rows = sudoku.Grid.GetLength(0);
-            int cols = sudoku.Grid.GetLength(1);
-
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < cols; j++)
-                {
-                    ICell? cell = sudoku.Grid[i, j];
-                    if (cell is not null)
-                    {
-                        Console.Write($"({cell.Value}, {cell.Field}) ");
-                    }
-                    else
-                    {
-                        Console.Write("( , ) ");
-                    }
-
-                }
-                Console.WriteLine();
-            }
-
-            return new Game(sudoku, puzzles[currentPuzzle]);
+            throw new ArgumentNullException("Sudoku is missing values.");
         }
     }
 }

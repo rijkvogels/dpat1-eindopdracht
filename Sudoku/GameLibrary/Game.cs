@@ -1,4 +1,6 @@
-﻿namespace GameLibrary
+﻿using GameLibrary.Enumerations;
+
+namespace GameLibrary
 {
     public class Game : IGame
     {
@@ -7,11 +9,11 @@
 
         public ISudoku Sudoku { get; }
         
-        public string PuzzlelUrl { get; }
+        public SudokuType SudokuType { get; }
 
-        public Game(ISudoku sudoku, string puzzleUrl) {
+        public Game(ISudoku sudoku, SudokuType sudokuType) {
             this.Sudoku = sudoku;
-            this.PuzzlelUrl = puzzleUrl;
+            this.SudokuType = sudokuType;
         }
 
         public void NextFrame(KeyData input)
@@ -63,7 +65,7 @@
         ISudoku Sudoku { get; }
         event EventHandler<Game> GameUpdated;
         bool Exit { get; }
-        string PuzzlelUrl { get; }
+        SudokuType SudokuType { get; }
 
         void NextFrame(KeyData input);
         void EndGame();

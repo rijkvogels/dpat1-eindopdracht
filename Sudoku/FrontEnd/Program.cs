@@ -12,7 +12,7 @@ namespace FrontEnd
                 IGame game = Parser.Create();
 
                 Display display = new();
-                //display.UpdateGame(game);
+                display.UpdateGame(game);
 
                 // Event handler that checks for game updates.
                 game.GameUpdated += (eSender, eGame) => display.UpdateGame(eGame);

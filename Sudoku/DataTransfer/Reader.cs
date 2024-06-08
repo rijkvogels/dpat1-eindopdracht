@@ -27,8 +27,6 @@ namespace DataTransfer
                         string content = File.ReadAllText(directoryPath + fileName);
                         SudokuType? type = GetSudokuType(fileName);
 
-                        Console.WriteLine(type);
-
                         return (content, type);
                     }
                 }                       
