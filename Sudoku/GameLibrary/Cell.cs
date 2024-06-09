@@ -10,7 +10,7 @@
             this.Value = value;
             this.Field = field;
 
-            this.Auxiliaries = [1,2,3,4,5,6,7,8,9];
+            this.Auxiliaries = [1,2,9];
         }
 
         public bool Validate()
