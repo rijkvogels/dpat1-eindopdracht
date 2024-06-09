@@ -2,7 +2,7 @@
 
 namespace DataTransfer.Factories
 {
-    internal interface ISudokuParser
+    internal interface ISudokuParserFactory
     {
         ISudoku Parse(string sudokuData);
     }

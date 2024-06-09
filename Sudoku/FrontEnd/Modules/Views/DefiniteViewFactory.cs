@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace FrontEnd.Modules
 {
-    internal class DefiniteView : IViewType
+    internal class DefiniteViewFactory : IViewTypeFactory
     {
         public IEnumerable<ColoredString> Show(IGame game)
         {

@@ -34,7 +34,7 @@ namespace DataTransfer
 
             if (sudokuType.HasValue && sudokuData is not null)
             {
-                ISudokuParser parser = SudokuParserFactory.GetParser(sudokuType.Value);
+                ISudokuParserFactory parser = SudokuParserFactory.GetParser(sudokuType.Value);
                 sudoku = parser.Parse(sudokuData);
 
                 return new Game(sudoku, sudokuType.Value);

@@ -2,7 +2,7 @@
 
 namespace DataTransfer.Factories
 {
-    internal class SudokuJigsawParser : ISudokuParser
+    internal class JigsawParserFactory : ISudokuParserFactory
     {
         public ISudoku Parse(string sudokuData)
         {
