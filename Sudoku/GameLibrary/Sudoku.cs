@@ -12,7 +12,7 @@ namespace GameLibrary
         public Sudoku(ICell[,] grid) {
             this.Grid = grid;
 
-            this.ViewType = ViewType.Definite;
+            this.ViewType = ViewType.Note;
             this.IndicationMode = false; // TODO: If we set this to true cells will be validated. Create a function Game to change this value.
         }
     }

@@ -11,7 +11,7 @@ namespace FrontEnd.Modules
 
             for (int row = 0; row < size; row++)
             {
-                // Yield the row's Tottom Border.
+                // Yield the row's Top Border.
                 for (int col = 0; col < size; col++)
                 {
                     ICell? cell = sudoku.Grid[row, col];
