@@ -28,6 +28,12 @@ namespace GameLibrary
                 return;
             }
 
+            // For optimalisation. If none of the input modes are given we don not have to update the game.
+            if (input.Move is null && input.Value is null && !input.ToggleViewMode && !input.ToggleIndicationMode)
+            {
+                return;
+            }
+
             if (input.ToggleViewMode)
             {
                 this.Sudoku.ViewType = this.Sudoku.ViewType == ViewType.Definite ? ViewType.Note : ViewType.Definite;
