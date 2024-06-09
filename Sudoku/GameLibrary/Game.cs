@@ -16,6 +16,7 @@ namespace GameLibrary
             this.SudokuType = sudokuType;
         }
 
+        // This function gets called after the game registers a new user input.
         public void NextFrame(KeyData input)
         {
             if (input.Exit)
