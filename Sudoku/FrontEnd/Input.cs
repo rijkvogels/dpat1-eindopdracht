@@ -50,6 +50,10 @@ namespace FrontEnd
                 case ConsoleKey.D9:
                     keyData.Value = 9;
                     break;
+                case ConsoleKey.D0:
+                case ConsoleKey.Backspace:
+                    keyData.Value = 0;
+                    break;
 
                 case ConsoleKey.UpArrow:
                 case ConsoleKey.W:
