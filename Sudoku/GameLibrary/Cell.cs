@@ -16,7 +16,7 @@
         public bool Validate()
         {
             // TODO: Create a Validator for the cell.
-            return true;
+            return false;
         }
     }
 

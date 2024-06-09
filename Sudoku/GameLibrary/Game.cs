@@ -24,7 +24,27 @@ namespace GameLibrary
                 return;
             }
 
-            // TODO: Handle the game logic here.
+            if (input.ToggleViewMode)
+            {
+                this.Sudoku.ViewType = this.Sudoku.ViewType == ViewType.Definite ? ViewType.Note : ViewType.Definite;
+                input.ToggleViewMode = false;
+            }
+
+            if (input.ToggleIndicationMode)
+            {
+                this.Sudoku.IndicationMode = !this.Sudoku.IndicationMode;
+                input.ToggleIndicationMode = false;
+            }
+
+            if (input.Move is not null)
+            {
+                // TODO: Handle the game logic here.
+            }
+
+            if (input.Value is not null)
+            {
+                // TODO: Handle the game logic here.
+            }
 
             // Update the game.
             this.UpdateGame();
