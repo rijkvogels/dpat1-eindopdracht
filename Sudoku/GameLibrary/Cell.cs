@@ -10,13 +10,13 @@
             this.Value = value;
             this.Field = field;
 
-            this.Auxiliaries = [];
+            this.Auxiliaries = [1,2,9];
         }
 
         public bool Validate()
         {
             // TODO: Create a Validator for the cell.
-            return true;
+            return false;
         }
     }
 

@@ -13,7 +13,7 @@ namespace GameLibrary
             this.Grid = grid;
 
             this.ViewType = ViewType.Definite;
-            this.IndicationMode = false; // TODO: If we set this to true cells will be validated. Create a function Game to change this value.
+            this.IndicationMode = false;
         }
     }
 
