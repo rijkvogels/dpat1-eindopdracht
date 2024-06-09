@@ -17,7 +17,7 @@ namespace FrontEnd.Modules.Factories
                     ICell? cell = sudoku.Grid[row, col];
                     if (cell is null)
                     {
-                        yield return new ColoredString("     ", Display.BorderColor, Display.BackgroundColor);
+                        yield return new ColoredString("     ", Display.BorderColor, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
                     }
                     else
                     {
@@ -37,7 +37,7 @@ namespace FrontEnd.Modules.Factories
                         ICell? cell = sudoku.Grid[row, col];
                         if (cell is null)
                         {
-                            yield return new ColoredString("     ", Display.BorderColor, Display.BackgroundColor);
+                            yield return new ColoredString("     ", Display.BorderColor, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
                         }
                         else
                         {
@@ -81,7 +81,7 @@ namespace FrontEnd.Modules.Factories
                     ICell? cell = sudoku.Grid[row, col];
                     if (cell is null)
                     {
-                        yield return new ColoredString("     ", Display.BorderColor, Display.BackgroundColor);
+                        yield return new ColoredString("     ", Display.BorderColor, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
                     }
                     else
                     {

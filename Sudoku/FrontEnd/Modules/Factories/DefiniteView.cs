@@ -20,10 +20,10 @@ namespace FrontEnd.Modules
 
                     else
                     {
-                        string topBorder = " ";
+                        string topBorder = "   ";
                         if (row > 0 && sudoku.Grid[row - 1, col] is not null && cell.Field != sudoku.Grid[row - 1, col].Field)
-                            topBorder = "—";
-                        yield return new ColoredString(" " + topBorder + " ", Display.BorderColor, Display.BackgroundColor);
+                            topBorder = "—--";
+                        yield return new ColoredString(topBorder, Display.BorderColor, Display.BackgroundColor);
                     }
                 }
                 yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
@@ -69,10 +69,10 @@ namespace FrontEnd.Modules
 
                     else
                     {
-                        string bottomBorder = " ";
+                        string bottomBorder = "   ";
                         if (row < size - 1 && sudoku.Grid[row + 1, col] is not null && cell is not null && cell.Field != sudoku.Grid[row + 1, col].Field)
-                            bottomBorder = "—";
-                        yield return new ColoredString(" " + bottomBorder + " ", Display.BorderColor, Display.BackgroundColor);
+                            bottomBorder = "—--";
+                        yield return new ColoredString(bottomBorder, Display.BorderColor, Display.BackgroundColor);
                     }
                 }
                 yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
