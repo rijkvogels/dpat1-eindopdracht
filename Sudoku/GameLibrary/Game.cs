@@ -51,7 +51,11 @@ namespace GameLibrary
 
             if (input.Value is not null)
             {
-                // TODO: Handle the game logic here.
+                // Update the Cell data.
+                if (!this.Player.UpdateCellValue(input.Value.Value, this.Sudoku.ViewType))
+                {
+                    return;
+                }
             }
 
             // Update the game.

@@ -23,36 +23,45 @@ namespace FrontEnd
                     keyData.ToggleViewMode = true;
                     break;
 
-                case ConsoleKey.D1:
-                    keyData.Value = 1;
-                    break;
-                case ConsoleKey.D2:
-                    keyData.Value = 2;
-                    break;
-                case ConsoleKey.D3:
-                    keyData.Value = 3;
-                    break;
-                case ConsoleKey.D4:
-                    keyData.Value = 4;
-                    break;
-                case ConsoleKey.D5:
-                    keyData.Value = 5;
-                    break;
-                case ConsoleKey.D6:
-                    keyData.Value = 6;
-                    break;
-                case ConsoleKey.D7:
-                    keyData.Value = 7;
-                    break;
-                case ConsoleKey.D8:
-                    keyData.Value = 8;
-                    break;
-                case ConsoleKey.D9:
-                    keyData.Value = 9;
-                    break;
                 case ConsoleKey.D0:
                 case ConsoleKey.Backspace:
                     keyData.Value = 0;
+                    break;
+
+                case ConsoleKey.D1:
+                    keyData.Value = 1;
+                    break;
+
+                case ConsoleKey.D2:
+                    keyData.Value = 2;
+                    break;
+
+                case ConsoleKey.D3:
+                    keyData.Value = 3;
+                    break;
+
+                case ConsoleKey.D4:
+                    keyData.Value = 4;
+                    break;
+
+                case ConsoleKey.D5:
+                    keyData.Value = 5;
+                    break;
+
+                case ConsoleKey.D6:
+                    keyData.Value = 6;
+                    break;
+
+                case ConsoleKey.D7:
+                    keyData.Value = 7;
+                    break;
+
+                case ConsoleKey.D8:
+                    keyData.Value = 8;
+                    break;
+
+                case ConsoleKey.D9:
+                    keyData.Value = 9;
                     break;
 
                 case ConsoleKey.UpArrow:
