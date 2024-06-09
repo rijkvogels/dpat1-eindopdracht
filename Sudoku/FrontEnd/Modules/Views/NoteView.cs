@@ -48,8 +48,9 @@ namespace FrontEnd.Modules.Factories
                             yield return new ColoredString(leftBorder, Display.BorderColor, Display.BackgroundColor);
 
                             // Check if the cell has a value if true display this. Else set the Auxillaries and display them.
-                            string cellContent;
                             ConsoleColor contentColor = Display.AuxiliaryColor;
+                            string cellContent;
+
                             if (cell.Value is not 0)
                             {
                                 cellContent = subRow == 1 ? $" {cell.Value} " : "   "; // Make sure the cell Value is centered in the middle row.
@@ -68,7 +69,12 @@ namespace FrontEnd.Modules.Factories
                                 cellContent = auxValue1 + auxValue2 + auxValue3;
                             }
 
-                            yield return new ColoredString(cellContent, contentColor, Display.BackgroundColor);
+                            // Hightlight the player's current position.
+                            ConsoleColor backgroundColor = Display.BackgroundColor;
+                            if (game.Player.HorizontalPosition == row && game.Player.VerticalPosition == col)
+                                backgroundColor = Display.PlayerColor;
+
+                            yield return new ColoredString(cellContent, contentColor, backgroundColor);
 
                             string rightBorder = " ";
                             if (col < size - 1 && sudoku.Grid[row, col + 1] is not null && cell.Field != sudoku.Grid[row, col + 1].Field)

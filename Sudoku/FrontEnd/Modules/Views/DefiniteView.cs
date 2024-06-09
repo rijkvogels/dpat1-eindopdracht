@@ -1,4 +1,5 @@
 ﻿using GameLibrary;
+using System.Numerics;
 
 namespace FrontEnd.Modules
 {
@@ -42,13 +43,18 @@ namespace FrontEnd.Modules
                             leftBorder = "|";
                         yield return new ColoredString(leftBorder, Display.BorderColor, Display.BackgroundColor);
 
-                        ConsoleColor valueColor = Display.ValueColor;
                         // Check if validation is on and if the cell is not valid.
+                        ConsoleColor valueColor = Display.ValueColor;
                         if (sudoku.IndicationMode && cell.Validate() is not true)
                             valueColor = Display.ErrorColor;
 
+                        // Hightlight the player's current position.
+                        ConsoleColor backgroundColor = Display.BackgroundColor;
+                        if (game.Player.HorizontalPosition == row && game.Player.VerticalPosition == col)
+                            backgroundColor = Display.PlayerColor;
+
                         string cellValue = cell.Value == 0 ? " " : cell.Value.ToString();
-                        yield return new ColoredString(cellValue, valueColor, Display.BackgroundColor);
+                        yield return new ColoredString(cellValue, valueColor, backgroundColor);
 
                         string rightBorder = " ";
                         if (col < size - 1 && sudoku.Grid[row, col + 1] is not null && cell.Field != sudoku.Grid[row, col + 1].Field)

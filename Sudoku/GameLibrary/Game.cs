@@ -8,12 +8,15 @@ namespace GameLibrary
         public bool Exit { get; private set; }
 
         public ISudoku Sudoku { get; }
-        
         public SudokuType SudokuType { get; }
+
+        public IPlayer Player { get; }
 
         public Game(ISudoku sudoku, SudokuType sudokuType) {
             this.Sudoku = sudoku;
             this.SudokuType = sudokuType;
+
+            this.Player = new Player(this.Sudoku);
         }
 
         // This function gets called after the game registers a new user input.
@@ -39,7 +42,11 @@ namespace GameLibrary
 
             if (input.Move is not null)
             {
-                // TODO: Handle the game logic here.
+                // Move the Player.
+                if (!this.Player.Move(input.Move.Value, this.Sudoku))
+                {
+                    return;
+                }   
             }
 
             if (input.Value is not null)
@@ -64,6 +71,7 @@ namespace GameLibrary
         ISudoku Sudoku { get; }
         event EventHandler<Game> GameUpdated;
         bool Exit { get; }
+        IPlayer Player { get; }
         SudokuType SudokuType { get; }
 
         void NextFrame(KeyData input);
