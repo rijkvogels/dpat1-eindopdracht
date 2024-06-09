@@ -54,6 +54,10 @@ namespace FrontEnd.Modules.Factories
                             {
                                 cellContent = subRow == 1 ? $" {cell.Value} " : "   "; // Make sure the cell Value is centered in the middle row.
                                 contentColor = Display.ValueColor;
+
+                                // Check if validation is on and if the cell is not valid.
+                                if (sudoku.IndicationMode && cell.Validate() is not true)
+                                    contentColor = Display.ErrorColor;
                             }
                             else
                             {
