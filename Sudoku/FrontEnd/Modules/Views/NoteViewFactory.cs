@@ -2,7 +2,7 @@
 
 namespace FrontEnd.Modules.Factories
 {
-    internal class NoteView : IViewType
+    internal class NoteViewFactory : IViewTypeFactory
     {
         public IEnumerable<ColoredString> Show(IGame game)
         {

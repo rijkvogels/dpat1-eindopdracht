@@ -5,12 +5,12 @@ namespace FrontEnd.Modules
 {
     internal class ViewTypeFactory
     {
-        public static IViewType Create(ViewType type)
+        public static IViewTypeFactory Create(ViewType type)
         {
             return type switch
             {
-                ViewType.Definite => new DefiniteView(),
-                ViewType.Note => new NoteView(),
+                ViewType.Definite => new DefiniteViewFactory(),
+                ViewType.Note => new NoteViewFactory(),
                 _ => throw new ArgumentException("Invalid View type."),
             };
         }

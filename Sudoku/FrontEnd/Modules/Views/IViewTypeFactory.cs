@@ -2,7 +2,7 @@
 
 namespace FrontEnd.Modules
 {
-    internal interface IViewType
+    internal interface IViewTypeFactory
     {
         IEnumerable<ColoredString> Show(IGame game);
     }

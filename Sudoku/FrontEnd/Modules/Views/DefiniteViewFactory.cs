@@ -59,9 +59,8 @@ namespace FrontEnd.Modules
                         string rightBorder = " ";
                         if (col < size - 1 && sudoku.Grid[row, col + 1] is not null && cell.Field != sudoku.Grid[row, col + 1].Field)
                             rightBorder = "|";
+
                         yield return new ColoredString(rightBorder, Display.BorderColor, Display.BackgroundColor);
-                        
-                        
                     }
                 }
                 yield return new ColoredString(Environment.NewLine);
