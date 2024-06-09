@@ -7,13 +7,13 @@ namespace GameLibrary
         public ICell[,] Grid { get; }
 
         public ViewType ViewType { get; set; }
-        public bool IndicationMode { get; set; }
+        public bool ValidationMode { get; set; }
 
         public Sudoku(ICell[,] grid) {
             this.Grid = grid;
 
             this.ViewType = ViewType.Definite;
-            this.IndicationMode = false;
+            this.ValidationMode = false;
         }
     }
 
@@ -21,6 +21,6 @@ namespace GameLibrary
     {
         ICell[,] Grid { get; }
         ViewType ViewType { get; set; }
-        bool IndicationMode { get; set; }
+        bool ValidationMode { get; set; }
     }
 }

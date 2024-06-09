@@ -42,7 +42,7 @@ namespace GameLibrary
 
             if (input.ToggleIndicationMode)
             {
-                this.Sudoku.IndicationMode = !this.Sudoku.IndicationMode;
+                this.Sudoku.ValidationMode = !this.Sudoku.ValidationMode;
                 input.ToggleIndicationMode = false;
             }
 
