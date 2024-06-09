@@ -6,9 +6,9 @@ namespace FrontEnd.Modules
     {
         private readonly string _title = "ATD Design Patterns 1 - Eindopdracht - Rijk Vogels & Martijn Vermeer";
 
-        private readonly string _exit = "Press ESC to restart the puzzle.";
-        private readonly string _validate = "Press C to toggle validation mode.";
-        private readonly string _viewmode = "Press Spacebar to toggle editormode.";
+        private readonly string _exitButton = "ESC";
+        private readonly string _validateButton = "C";
+        private readonly string _viewmodeButton = "Spacebar";
 
         public IEnumerable<ColoredString> Render(IGame game)
         {
@@ -22,9 +22,19 @@ namespace FrontEnd.Modules
 
             yield return new("\n");
 
-            yield return new($"{Display.MarginLeft}{_exit}" + "\n");
-            yield return new($"{Display.MarginLeft}{_validate}" + "\n");
-            yield return new($"{Display.MarginLeft}{_viewmode}" + "\n");
+            yield return new($"{Display.MarginLeft}Press ");
+            yield return new($"{_exitButton}", ConsoleColor.DarkRed);
+            yield return new($" to restart the puzzle." + "\n");
+
+            yield return new($"{Display.MarginLeft}Press ");
+            yield return new($"{_validateButton}", ConsoleColor.DarkRed);
+            yield return new($" to toggle validation mode." + "\n");
+
+            yield return new($"{Display.MarginLeft}Press ");
+            yield return new($"{_viewmodeButton}", ConsoleColor.DarkRed);
+            yield return new($" to toggle editor mode." + "\n");
+
+            yield return new("\n");
 
             yield return new(new string('-', Console.WindowWidth) + "\n");
 

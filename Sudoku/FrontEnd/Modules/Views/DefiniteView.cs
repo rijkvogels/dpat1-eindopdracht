@@ -17,7 +17,7 @@ namespace FrontEnd.Modules
                 {
                     ICell? cell = sudoku.Grid[row, col];
                     if (cell is null)
-                        yield return new ColoredString("   ", ConsoleColor.White, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
+                        yield return new ColoredString("   "); // Display an empty cell for Samurai puzzles.
 
                     else
                     {
@@ -27,14 +27,14 @@ namespace FrontEnd.Modules
                         yield return new ColoredString(topBorder, Display.BorderColor, Display.BackgroundColor);
                     }
                 }
-                yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
+                yield return new ColoredString(Environment.NewLine);
 
                 // Yield the row's Value and Left and Right Border.
                 for (int col = 0; col < size; col++)
                 {
                     ICell? cell = sudoku.Grid[row, col];
                     if (cell == null)
-                        yield return new ColoredString("   ", ConsoleColor.White, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
+                        yield return new ColoredString("   "); // Display an empty cell for Samurai puzzles.
 
                     else
                     {
@@ -64,14 +64,14 @@ namespace FrontEnd.Modules
                         
                     }
                 }
-                yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
+                yield return new ColoredString(Environment.NewLine);
 
                 // Yield the row's Bottom Border.
                 for (int col = 0; col < size; col++)
                 {
                     ICell? cell = sudoku.Grid[row, col];
                     if (cell is null)
-                        yield return new ColoredString("   ", ConsoleColor.White, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
+                        yield return new ColoredString("   "); // Display an empty cell for Samurai puzzles.
 
                     else
                     {
@@ -81,7 +81,7 @@ namespace FrontEnd.Modules
                         yield return new ColoredString(bottomBorder, Display.BorderColor, Display.BackgroundColor);
                     }
                 }
-                yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
+                yield return new ColoredString(Environment.NewLine);
             }
         }
     }
