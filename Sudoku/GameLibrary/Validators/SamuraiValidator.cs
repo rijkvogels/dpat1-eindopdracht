@@ -1,8 +1,8 @@
 ﻿namespace GameLibrary.Validators
 {
-    internal class SixBySixValidator : ValidatorDecorator
+    internal class SamuraiValidator : ValidatorDecorator
     {
-        public SixBySixValidator(IValidator validator) : base(validator) { }
+        public SamuraiValidator(IValidator validator) : base(validator) { }
         
         public override bool ValidateCell(ICell cell, ISudoku sudoku, int horizontalPosition, int verticalPosition)
         {

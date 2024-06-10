@@ -15,11 +15,13 @@ namespace GameLibrary
             this.Auxiliaries = [];
         }
 
-        public bool Validate(ISudoku sudoku, int HorizontalPosition, int VerticalPosition)
+        public bool Validate(ISudoku sudoku, int VerticalPosition, int HorizontalPosition)
         {
             IValidator validator = new BaseValidator();
 
             validator = new GridValidator(validator);
+
+            validator = new RowValidator(validator);
 
             return validator.ValidateCell(this, sudoku, HorizontalPosition, VerticalPosition);
         }
