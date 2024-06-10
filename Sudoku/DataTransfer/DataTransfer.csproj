@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Puzzles\" />
+	<Folder Include="Parsers\" />
   </ItemGroup>
 
 </Project>
