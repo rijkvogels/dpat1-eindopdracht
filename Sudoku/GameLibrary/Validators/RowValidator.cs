@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary.Validators
 {
-    internal class RowValidator : ValidatorDecorator
+    public class RowValidator : ValidatorDecorator
     {
         public RowValidator(IValidator validator) : base(validator) { }
         

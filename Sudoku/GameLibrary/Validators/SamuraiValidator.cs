@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary.Validators
 {
-    internal class SamuraiValidator : ValidatorDecorator
+    public class SamuraiValidator : ValidatorDecorator
     {
         public SamuraiValidator(IValidator validator) : base(validator) { }
 

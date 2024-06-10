@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary.Validators
 {
-    internal abstract class ValidatorDecorator : IValidator
+    public abstract class ValidatorDecorator : IValidator
     {
         protected IValidator _validator;
 
