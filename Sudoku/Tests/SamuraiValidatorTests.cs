@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using GameLibrary;
 using GameLibrary.Validators;
 using Moq;
@@ -32,7 +33,7 @@ namespace Tests
             bool result = samuraiValidator.ValidateCell(cell, _sampleSudoku, 0, 0);
 
             // Assert
-            Assert.IsFalse(result);
+            Assert.That(result, Is.False);
         }
 
         [Test]
@@ -49,7 +50,7 @@ namespace Tests
             var result = samuraiValidator.ValidateCell(cell, _sampleSudoku, 0, 0);
 
             // Assert
-            Assert.IsFalse(result);
+            Assert.That(result, Is.False);
         }
 
         [Test]
@@ -65,10 +66,10 @@ namespace Tests
             var result = samuraiValidator.ValidateCell(cell, _sampleSudoku, 0, 0);
 
             // Assert
-            Assert.IsTrue(result);
+            Assert.That(result, Is.True);
         }
 
-        private ISudoku CreateSampleSudoku()
+        private static ISudoku CreateSampleSudoku()
         {
             ICell[,] grid = new ICell[21, 21];
             for (int i = 0; i < 21; i++)
@@ -83,7 +84,7 @@ namespace Tests
             return new Sudoku(grid, SudokuType.SudokuSamurai);
         }
 
-        private int GetField(int row, int col)
+        private static int GetField(int row, int col)
         {
             // Implement this method based on your field calculation logic
             return (row / 3) * 3 + (col / 3);
