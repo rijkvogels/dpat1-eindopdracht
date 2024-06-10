@@ -10,6 +10,7 @@
             if (!base.ValidateCell(cell, sudoku, horizontalPosition, verticalPosition))
                 return false;
 
+            // Instead of Validating the entire Sudoku we only Validate the Subgrid the current cell belongs to.
             return ValidateRowInSubGrid(cell, sudoku, horizontalPosition, verticalPosition) &&
                    ValidateColumnInSubGrid(cell, sudoku, horizontalPosition, verticalPosition);
         }
