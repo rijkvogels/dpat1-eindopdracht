@@ -46,7 +46,7 @@ namespace FrontEnd.Modules
                         // Check if validation is on and if the cell is not valid.
                         ConsoleColor valueColor = Display.ValueColor;
                         if (sudoku.ValidationMode && cell.Validate(sudoku, row, col) is not true)
-                            valueColor = Display.ErrorColor;
+                            valueColor = Display.WarningColor;
 
                         // Hightlight the player's current position.
                         ConsoleColor backgroundColor = Display.BackgroundColor;

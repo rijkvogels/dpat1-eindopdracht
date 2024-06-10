@@ -58,7 +58,7 @@ namespace FrontEnd.Modules.Factories
 
                                 // Check if validation is on and if the cell is not valid.
                                 if (sudoku.ValidationMode && cell.Validate(sudoku, row, col) is not true)
-                                    contentColor = Display.ErrorColor;
+                                    contentColor = Display.WarningColor;
                             }
                             else
                             {

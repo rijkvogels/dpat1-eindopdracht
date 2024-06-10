@@ -9,7 +9,7 @@ namespace FrontEnd
         public static readonly ConsoleColor BorderColor = ConsoleColor.Black;
 
         public static readonly ConsoleColor ValueColor = ConsoleColor.Yellow;
-        public static readonly ConsoleColor ErrorColor = ConsoleColor.Red;
+        public static readonly ConsoleColor WarningColor = ConsoleColor.Red;
         public static readonly ConsoleColor AuxiliaryColor = ConsoleColor.White;
         public static readonly ConsoleColor PlayerColor = ConsoleColor.DarkMagenta;
 
