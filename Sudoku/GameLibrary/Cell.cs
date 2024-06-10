@@ -1,4 +1,7 @@
-﻿namespace GameLibrary
+﻿using GameLibrary.Enumerations;
+using GameLibrary.Validators;
+
+namespace GameLibrary
 {
     public class Cell : ICell
     {
@@ -13,13 +16,23 @@
             this.Auxiliaries = [];
         }
 
-        public bool Validate()
+        public bool Validate(ISudoku sudoku, int VerticalPosition, int HorizontalPosition)
         {
-            // TODO: Create a Validator for the cell.
-            // TODO: This validator should have the paramteres, sudoku, positionHorizontal and positionVertical.
+            IValidator validator = new BaseValidator();
 
-            // TODO: I THINK WE SHOULD MOVE VALIDATE FROM VIEWS TO GAME AFTER A NEW VALUE GETS UPDATED TO LIMIT THE AMOUNT OF TIMES IT GETS CALLED AND FOR MVC.
-            return false;
+            validator = new GridValidator(validator);
+
+            if (sudoku.Type == SudokuType.Sudoku9x9 || sudoku.Type == SudokuType.Sudoku6x6 || sudoku.Type == SudokuType.Sudoku4x4 || sudoku.Type == SudokuType.SudokuJigsaw)
+            {
+                validator = new RowValidator(validator);
+            }
+            
+            if (sudoku.Type == SudokuType.SudokuSamurai)
+            {
+                validator = new SamuraiValidator(validator);
+            }
+
+            return validator.ValidateCell(this, sudoku, HorizontalPosition, VerticalPosition);
         }
     }
 
@@ -29,6 +42,6 @@
         int Field { get; }
         int[] Auxiliaries { get; set; }
 
-        bool Validate();
+        bool Validate(ISudoku sudoku, int HorizontalPosition, int VerticalPosition);
     }
 }

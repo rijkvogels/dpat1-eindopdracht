@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace FrontEnd.Modules
 {
-    internal class DefiniteView : IViewType
+    internal class DefiniteViewFactory : IViewTypeFactory
     {
         public IEnumerable<ColoredString> Show(IGame game)
         {
@@ -17,7 +17,7 @@ namespace FrontEnd.Modules
                 {
                     ICell? cell = sudoku.Grid[row, col];
                     if (cell is null)
-                        yield return new ColoredString("   ", ConsoleColor.White, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
+                        yield return new ColoredString("   "); // Display an empty cell for Samurai puzzles.
 
                     else
                     {
@@ -27,14 +27,14 @@ namespace FrontEnd.Modules
                         yield return new ColoredString(topBorder, Display.BorderColor, Display.BackgroundColor);
                     }
                 }
-                yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
+                yield return new ColoredString(Environment.NewLine);
 
                 // Yield the row's Value and Left and Right Border.
                 for (int col = 0; col < size; col++)
                 {
                     ICell? cell = sudoku.Grid[row, col];
                     if (cell == null)
-                        yield return new ColoredString("   ", ConsoleColor.White, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
+                        yield return new ColoredString("   "); // Display an empty cell for Samurai puzzles.
 
                     else
                     {
@@ -45,8 +45,8 @@ namespace FrontEnd.Modules
 
                         // Check if validation is on and if the cell is not valid.
                         ConsoleColor valueColor = Display.ValueColor;
-                        if (sudoku.IndicationMode && cell.Validate() is not true)
-                            valueColor = Display.ErrorColor;
+                        if (sudoku.ValidationMode && cell.Validate(sudoku, row, col) is not true)
+                            valueColor = Display.WarningColor;
 
                         // Hightlight the player's current position.
                         ConsoleColor backgroundColor = Display.BackgroundColor;
@@ -59,19 +59,18 @@ namespace FrontEnd.Modules
                         string rightBorder = " ";
                         if (col < size - 1 && sudoku.Grid[row, col + 1] is not null && cell.Field != sudoku.Grid[row, col + 1].Field)
                             rightBorder = "|";
+
                         yield return new ColoredString(rightBorder, Display.BorderColor, Display.BackgroundColor);
-                        
-                        
                     }
                 }
-                yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
+                yield return new ColoredString(Environment.NewLine);
 
                 // Yield the row's Bottom Border.
                 for (int col = 0; col < size; col++)
                 {
                     ICell? cell = sudoku.Grid[row, col];
                     if (cell is null)
-                        yield return new ColoredString("   ", ConsoleColor.White, ConsoleColor.Black); // Display an empty cell for Samurai puzzles.
+                        yield return new ColoredString("   "); // Display an empty cell for Samurai puzzles.
 
                     else
                     {
@@ -81,7 +80,7 @@ namespace FrontEnd.Modules
                         yield return new ColoredString(bottomBorder, Display.BorderColor, Display.BackgroundColor);
                     }
                 }
-                yield return new ColoredString(Environment.NewLine, ConsoleColor.White, ConsoleColor.Black);
+                yield return new ColoredString(Environment.NewLine);
             }
         }
     }

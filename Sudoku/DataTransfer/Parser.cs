@@ -1,11 +1,12 @@
 ﻿using DataTransfer.Factories;
 using GameLibrary;
+using GameLibrary.Enumerations;
 
 namespace DataTransfer
 {
     public static class Parser
     {
-        private const int currentPuzzle = 2;
+        private const int currentPuzzle = 4;
 
         private static readonly string[] puzzles =
         [
@@ -34,10 +35,10 @@ namespace DataTransfer
 
             if (sudokuType.HasValue && sudokuData is not null)
             {
-                ISudokuParser parser = SudokuParserFactory.GetParser(sudokuType.Value);
-                sudoku = parser.Parse(sudokuData);
+                ISudokuParserFactory parser = SudokuParserFactory.GetParser(sudokuType.Value);
+                sudoku = parser.Parse(sudokuData, sudokuType.Value);
 
-                return new Game(sudoku, sudokuType.Value);
+                return new Game(sudoku);
             }
 
             throw new ArgumentNullException("Sudoku is missing values.");

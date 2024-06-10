@@ -1,10 +1,11 @@
 ﻿using GameLibrary;
+using GameLibrary.Enumerations;
 
 namespace DataTransfer.Factories
 {
-    internal class SudokuSamuraiParser : ISudokuParser
+    internal class SamuraiParserFactory : ISudokuParserFactory
     {
-        public ISudoku Parse(string sudokuData)
+        public ISudoku Parse(string sudokuData, SudokuType sudokuType)
         {
             // Make sure we remove all the unused data.
             var grids = sudokuData.Replace("\r", "").Split('\n');
@@ -38,7 +39,7 @@ namespace DataTransfer.Factories
                 }
             }
 
-            return new Sudoku(grid);
+            return new Sudoku(grid, sudokuType);
         }
 
         private static int[,] Parse9x9Grid(string gridData)

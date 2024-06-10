@@ -8,14 +8,11 @@ namespace GameLibrary
         public bool Exit { get; private set; }
 
         public ISudoku Sudoku { get; }
-        public SudokuType SudokuType { get; }
 
         public IPlayer Player { get; }
 
-        public Game(ISudoku sudoku, SudokuType sudokuType) {
+        public Game(ISudoku sudoku) {
             this.Sudoku = sudoku;
-            this.SudokuType = sudokuType;
-
             this.Player = new Player(this.Sudoku);
         }
 
@@ -42,7 +39,7 @@ namespace GameLibrary
 
             if (input.ToggleIndicationMode)
             {
-                this.Sudoku.IndicationMode = !this.Sudoku.IndicationMode;
+                this.Sudoku.ValidationMode = !this.Sudoku.ValidationMode;
                 input.ToggleIndicationMode = false;
             }
 
@@ -82,7 +79,6 @@ namespace GameLibrary
         event EventHandler<Game> GameUpdated;
         bool Exit { get; }
         IPlayer Player { get; }
-        SudokuType SudokuType { get; }
 
         void NextFrame(KeyData input);
         void EndGame();

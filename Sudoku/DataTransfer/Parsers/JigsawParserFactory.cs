@@ -1,10 +1,11 @@
 ﻿using GameLibrary;
+using GameLibrary.Enumerations;
 
 namespace DataTransfer.Factories
 {
-    internal class SudokuJigsawParser : ISudokuParser
+    internal class JigsawParserFactory : ISudokuParserFactory
     {
-        public ISudoku Parse(string sudokuData)
+        public ISudoku Parse(string sudokuData, SudokuType sudokuType)
         {
             if (sudokuData.StartsWith("SumoCueV1="))
             {
@@ -34,7 +35,7 @@ namespace DataTransfer.Factories
                 grid[row, col] = new Cell(value, field);
             }
 
-            return new Sudoku(grid);
+            return new Sudoku(grid, sudokuType);
         }
     }
 }

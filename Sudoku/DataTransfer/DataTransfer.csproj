@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-	<Folder Include="Parsers\" />
     <Folder Include="Puzzles\" />
+	<Folder Include="Parsers\" />
   </ItemGroup>
 
 </Project>
