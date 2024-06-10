@@ -6,7 +6,7 @@ namespace DataTransfer
 {
     public static class Parser
     {
-        private const int currentPuzzle = 2;
+        private const int currentPuzzle = 4;
 
         private static readonly string[] puzzles =
         [

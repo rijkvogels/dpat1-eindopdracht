@@ -14,7 +14,7 @@
             foreach (var sudokuCell in sudoku.Grid)
             {
                 // Check if the Cell has the same Field and the same Value but is not the same Cell being validated.
-                if (sudokuCell.Field == cell.Field && sudokuCell.Value == cell.Value && sudokuCell != cell)
+                if (sudokuCell is not null && sudokuCell.Field == cell.Field && sudokuCell.Value == cell.Value && sudokuCell != cell)
                 {
                     return false;
                 }
