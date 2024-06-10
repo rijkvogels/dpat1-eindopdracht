@@ -1,5 +1,6 @@
 ﻿using DataTransfer.Factories;
 using GameLibrary;
+using GameLibrary.Enumerations;
 
 namespace DataTransfer
 {
@@ -35,9 +36,9 @@ namespace DataTransfer
             if (sudokuType.HasValue && sudokuData is not null)
             {
                 ISudokuParserFactory parser = SudokuParserFactory.GetParser(sudokuType.Value);
-                sudoku = parser.Parse(sudokuData);
+                sudoku = parser.Parse(sudokuData, sudokuType.Value);
 
-                return new Game(sudoku, sudokuType.Value);
+                return new Game(sudoku);
             }
 
             throw new ArgumentNullException("Sudoku is missing values.");

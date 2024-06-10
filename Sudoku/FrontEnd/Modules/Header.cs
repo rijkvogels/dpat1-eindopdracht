@@ -17,7 +17,7 @@ namespace FrontEnd.Modules
             yield return new($"{Display.MarginLeft}{_title}" + "\n");
 
             yield return new($"{Display.MarginLeft}Current puzzle type: ");
-            yield return new($"{game.SudokuType}", ConsoleColor.Green);
+            yield return new($"{game.Sudoku.Type}", ConsoleColor.Green);
             yield return new("\n");
 
             yield return new("\n");

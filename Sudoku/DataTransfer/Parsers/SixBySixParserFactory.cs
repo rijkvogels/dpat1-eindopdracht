@@ -1,10 +1,11 @@
 ﻿using GameLibrary;
+using GameLibrary.Enumerations;
 
 namespace DataTransfer.Factories
 {
     internal class SixBySixParserFactory : ISudokuParserFactory
     {
-        public ISudoku Parse(string sudokuData)
+        public ISudoku Parse(string sudokuData, SudokuType sudokuType)
         {
             if (sudokuData.Length != 36)
             {
@@ -21,7 +22,7 @@ namespace DataTransfer.Factories
                 grid[row, col] = new Cell(sudokuData[i] - '0', GetField(row, col));
             }
 
-            return new Sudoku(grid);
+            return new Sudoku(grid, sudokuType);
         }
 
         private static int GetField(int row, int col)
