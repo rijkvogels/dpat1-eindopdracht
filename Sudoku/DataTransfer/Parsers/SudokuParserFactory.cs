@@ -2,7 +2,7 @@
 
 namespace DataTransfer.Factories
 {
-    internal static class SudokuParserFactory
+    public static class SudokuParserFactory
     {
         public static ISudokuParserFactory GetParser(SudokuType sudokuType)
         {
