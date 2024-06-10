@@ -6,7 +6,7 @@
         
         public override bool ValidateCell(ICell cell, ISudoku sudoku, int horizontalPosition, int verticalPosition)
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 }
