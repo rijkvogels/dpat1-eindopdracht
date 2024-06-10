@@ -19,8 +19,7 @@ namespace GameLibrary
         {
             IValidator validator = new BaseValidator();
 
-            // TODO: Wrap with additional validators based on the sudoku type.
-            //validator = new NineByNineValidator(validator);
+            validator = new GridValidator(validator);
 
             return validator.ValidateCell(this, sudoku, HorizontalPosition, VerticalPosition);
         }
