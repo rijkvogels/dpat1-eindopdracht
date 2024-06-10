@@ -6,6 +6,10 @@
 
         public override bool ValidateCell(ICell cell, ISudoku sudoku, int horizontalPosition, int verticalPosition)
         {
+            // If an earlier validator has returned false we can short-circuit this validator.
+            if (!base.ValidateCell(cell, sudoku, horizontalPosition, verticalPosition))
+                return false;
+
             // Validate if the Grid has no duplicates.
             foreach (var sudokuCell in sudoku.Grid)
             {
