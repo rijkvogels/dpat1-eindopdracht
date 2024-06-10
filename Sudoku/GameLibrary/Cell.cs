@@ -1,4 +1,6 @@
-﻿namespace GameLibrary
+﻿using GameLibrary.Validators;
+
+namespace GameLibrary
 {
     public class Cell : ICell
     {
@@ -15,9 +17,11 @@
 
         public bool Validate(ISudoku sudoku, int HorizontalPosition, int VerticalPosition)
         {
-            // TODO: Create a Validator for the cell.
+            IValidator validator = new BaseValidator();
 
-            return false;
+            // TODO: Wrap with additional validators based on the sudoku type.
+
+            return validator.ValidateCell(this, sudoku, HorizontalPosition, VerticalPosition);
         }
     }
 
