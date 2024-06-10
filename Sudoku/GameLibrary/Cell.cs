@@ -1,4 +1,5 @@
-﻿using GameLibrary.Validators;
+﻿using GameLibrary.Enumerations;
+using GameLibrary.Validators;
 
 namespace GameLibrary
 {
@@ -21,7 +22,15 @@ namespace GameLibrary
 
             validator = new GridValidator(validator);
 
-            validator = new RowValidator(validator);
+            if (sudoku.Type == SudokuType.Sudoku9x9 || sudoku.Type == SudokuType.Sudoku6x6 || sudoku.Type == SudokuType.Sudoku4x4 || sudoku.Type == SudokuType.SudokuJigsaw)
+            {
+                validator = new RowValidator(validator);
+            }
+            
+            if (sudoku.Type == SudokuType.SudokuSamurai)
+            {
+                validator = new SamuraiValidator(validator);
+            }
 
             return validator.ValidateCell(this, sudoku, HorizontalPosition, VerticalPosition);
         }
