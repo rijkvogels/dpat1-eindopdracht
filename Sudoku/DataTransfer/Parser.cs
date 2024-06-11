@@ -31,7 +31,7 @@ namespace DataTransfer
         {
             ISudoku sudoku;
 
-            (string sudokuData, SudokuType? sudokuType) = new Reader().Read(puzzles[currentPuzzle]);
+            (string? sudokuData, SudokuType? sudokuType) = new Reader().Read(puzzles[currentPuzzle]);
 
             if (sudokuType.HasValue && sudokuData is not null)
             {
