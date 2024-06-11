@@ -12,7 +12,7 @@ namespace DataTransfer.Factories
                 throw new ArgumentOutOfRangeException("Invalid Sudoku data. The data must contain exactly 16 characters.");
             }
 
-            var grid = new ICell[4, 4];
+            ICell[,] grid = new ICell[4, 4];
 
             for (int i = 0; i < 16; i++)
             {

@@ -8,7 +8,7 @@ namespace DataTransfer.Factories
         public ISudoku Parse(string sudokuData, SudokuType sudokuType)
         {
             // Make sure we remove all the unused data.
-            var grids = sudokuData.Replace("\r", "").Split('\n');
+            string[] grids = sudokuData.Replace("\r", "").Split('\n');
             if (grids.Length != 5)
             {
                 throw new ArgumentException("Invalid Samurai Sudoku data. The data must contain exactly 5 grids.");

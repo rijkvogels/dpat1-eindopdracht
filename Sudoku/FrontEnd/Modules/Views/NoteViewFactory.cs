@@ -6,7 +6,7 @@ namespace FrontEnd.Modules.Factories
     {
         public IEnumerable<ColoredString> Show(IGame game)
         {
-            var sudoku = game.Sudoku;
+            ISudoku sudoku = game.Sudoku;
             int size = (int)Math.Sqrt(sudoku.Grid.Length);
 
             for (int row = 0; row < size; row++)

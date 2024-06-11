@@ -40,14 +40,14 @@ namespace Tests
         public void SamuraiValidator_ShouldReturnFalse_WhenDuplicateInColumnInSubGrid()
         {
             // Arrange.
-            var cell = _sampleSudoku.Grid[0, 0];
+            ICell cell = _sampleSudoku.Grid[0, 0];
             cell.Value = 5;
             _sampleSudoku.Grid[1, 0].Value = 5; // Duplicate in the same column.
 
-            var samuraiValidator = new SamuraiValidator(_baseValidatorMock.Object);
+            SamuraiValidator samuraiValidator = new(_baseValidatorMock.Object);
 
             // Act.
-            var result = samuraiValidator.ValidateCell(cell, _sampleSudoku, 0, 0);
+            bool result = samuraiValidator.ValidateCell(cell, _sampleSudoku, 0, 0);
 
             // Assert.
             Assert.That(result, Is.False);
@@ -57,13 +57,13 @@ namespace Tests
         public void SamuraiValidator_ShouldReturnTrue_WhenNoDuplicatesInSubGrid()
         {
             // Arrange.
-            var cell = _sampleSudoku.Grid[0, 0];
+            ICell cell = _sampleSudoku.Grid[0, 0];
             cell.Value = 4;
 
-            var samuraiValidator = new SamuraiValidator(_baseValidatorMock.Object);
+            SamuraiValidator samuraiValidator = new(_baseValidatorMock.Object);
 
             // Act.
-            var result = samuraiValidator.ValidateCell(cell, _sampleSudoku, 0, 0);
+            bool result = samuraiValidator.ValidateCell(cell, _sampleSudoku, 0, 0);
 
             // Assert.
             Assert.That(result, Is.True);
