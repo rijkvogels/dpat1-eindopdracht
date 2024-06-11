@@ -25,7 +25,7 @@ namespace GameLibrary
                 return;
             }
 
-            // For optimalisation. If none of the input modes are given we don not have to update the game.
+            // For optimalisation. If none of the input modes are given we do not have to update the game.
             if (input.Move is null && input.Value is null && !input.ToggleViewMode && !input.ToggleIndicationMode)
             {
                 return;

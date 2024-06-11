@@ -2,7 +2,7 @@
 
 namespace GameLibrary
 {
-    internal class Player : IPlayer
+    public class Player : IPlayer
     {
         public int HorizontalPosition { get; private set; }
         public int VerticalPosition { get; private set; }

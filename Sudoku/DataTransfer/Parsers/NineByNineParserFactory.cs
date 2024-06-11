@@ -3,7 +3,7 @@ using GameLibrary.Enumerations;
 
 namespace DataTransfer.Factories
 {
-    internal class NineByNineParserFactory : ISudokuParserFactory
+    public class NineByNineParserFactory : ISudokuParserFactory
     {
         public ISudoku Parse(string sudokuData, SudokuType sudokuType)
         {
