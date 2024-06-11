@@ -10,7 +10,7 @@ namespace DataTransfer
 
         public Reader()
         {
-            _projectPath = "DPAT1\\dpat1-eindopdracht\\Sudoku";
+            _projectPath = "dpat1-eindopdracht\\Sudoku";
             _directoryPath = "DataTransfer\\Puzzles\\";
         }
 
