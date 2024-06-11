@@ -19,7 +19,7 @@ namespace Tests
         public void TestGridValidator()
         {
             // Arrange
-            IValidator gridValidator = new GridValidator(new BaseValidator());
+            GridValidator gridValidator = new(new BaseValidator());
 
             // Act & Assert
             // Test with a valid cell

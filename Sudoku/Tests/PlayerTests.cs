@@ -22,8 +22,8 @@ namespace Tests
         public void UpdateCellValue_ShouldUpdateDefiniteValue_WhenViewTypeIsDefinite()
         {
             // Arrange.
-            var cell = _sampleSudoku.Grid[_player.HorizontalPosition, _player.VerticalPosition];
-            var newValue = 5;
+            ICell cell = _sampleSudoku.Grid[_player.HorizontalPosition, _player.VerticalPosition];
+            int newValue = 5;
 
             // Act.
             _player.UpdateCellValue(newValue, ViewType.Definite);
@@ -36,8 +36,8 @@ namespace Tests
         public void UpdateCellValue_ShouldClearCellValue_WhenValueMatchesCurrentCellValue()
         {
             // Arrange.
-            var cell = _sampleSudoku.Grid[_player.HorizontalPosition, _player.VerticalPosition];
-            var originalValue = cell.Value;
+            ICell cell = _sampleSudoku.Grid[_player.HorizontalPosition, _player.VerticalPosition];
+            int originalValue = cell.Value;
 
             // Act.
             _player.UpdateCellValue(originalValue, ViewType.Definite);

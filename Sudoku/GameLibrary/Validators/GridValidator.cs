@@ -11,7 +11,7 @@
                 return false;
 
             // Validate if the Grid has no duplicates.
-            foreach (var sudokuCell in sudoku.Grid)
+            foreach (ICell? sudokuCell in sudoku.Grid)
             {
                 // Check if the Cell has the same Field and the same Value but is not the same Cell being validated.
                 if (sudokuCell is not null && sudokuCell.Field == cell.Field && sudokuCell.Value == cell.Value && sudokuCell != cell)
