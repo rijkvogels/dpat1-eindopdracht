@@ -23,49 +23,49 @@ namespace Tests
         [Test]
         public void SamuraiValidator_ShouldReturnFalse_WhenDuplicateInRowInSubGrid()
         {
-            // Arrange
+            // Arrange.
             ICell cell = _sampleSudoku.Grid[0, 0];
             cell.Value = 5;
 
-            SamuraiValidator samuraiValidator = new SamuraiValidator(_baseValidatorMock.Object);
+            SamuraiValidator samuraiValidator = new(_baseValidatorMock.Object);
 
-            // Act
+            // Act.
             bool result = samuraiValidator.ValidateCell(cell, _sampleSudoku, 0, 0);
 
-            // Assert
+            // Assert.
             Assert.That(result, Is.False);
         }
 
         [Test]
         public void SamuraiValidator_ShouldReturnFalse_WhenDuplicateInColumnInSubGrid()
         {
-            // Arrange
+            // Arrange.
             var cell = _sampleSudoku.Grid[0, 0];
             cell.Value = 5;
-            _sampleSudoku.Grid[1, 0].Value = 5; // Duplicate in the same column
+            _sampleSudoku.Grid[1, 0].Value = 5; // Duplicate in the same column.
 
             var samuraiValidator = new SamuraiValidator(_baseValidatorMock.Object);
 
-            // Act
+            // Act.
             var result = samuraiValidator.ValidateCell(cell, _sampleSudoku, 0, 0);
 
-            // Assert
+            // Assert.
             Assert.That(result, Is.False);
         }
 
         [Test]
         public void SamuraiValidator_ShouldReturnTrue_WhenNoDuplicatesInSubGrid()
         {
-            // Arrange
+            // Arrange.
             var cell = _sampleSudoku.Grid[0, 0];
             cell.Value = 4;
 
             var samuraiValidator = new SamuraiValidator(_baseValidatorMock.Object);
 
-            // Act
+            // Act.
             var result = samuraiValidator.ValidateCell(cell, _sampleSudoku, 0, 0);
 
-            // Assert
+            // Assert.
             Assert.That(result, Is.True);
         }
 
@@ -79,14 +79,13 @@ namespace Tests
                     grid[i, j] = new Cell(0, GetField(i, j));
                 }
             }
-            grid[0, 1].Value = 5; // Duplicate in the same row for one test case
+            grid[0, 1].Value = 5;
 
             return new Sudoku(grid, SudokuType.SudokuSamurai);
         }
 
         private static int GetField(int row, int col)
         {
-            // Implement this method based on your field calculation logic
             return (row / 3) * 3 + (col / 3);
         }
     }
