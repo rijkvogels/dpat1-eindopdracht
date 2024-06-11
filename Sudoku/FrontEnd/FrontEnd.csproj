@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataTransfer\DataTransfer.csproj" />
+    <ProjectReference Include="..\GameLibrary\GameLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
